@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "test": "jscodeshift -t transforms/use-default-css-import.js"
+  },
+  "dependencies": {
+    "gonzales-pe": "^4.2.4",
+    "jscodeshift": "^0.6.4",
+    "lodash": "^4.17.14",
+    "yarn": "^1.17.3"
+  }
+}

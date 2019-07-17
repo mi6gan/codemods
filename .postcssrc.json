@@ -1,0 +1,11 @@
+{
+  "ident": "postcss",
+  "parser": "postcss-scss",
+  "plugins": {
+    "postcss-easy-import": {
+      "prefix": "_",
+      "extensions": [".scss", ".css"]
+    },
+    "./postcss/sass-mixins": {}
+  }
+}
