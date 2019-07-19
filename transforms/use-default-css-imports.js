@@ -30,6 +30,8 @@ module.exports = function(fileInfo, api, options) {
         transformClassName
       );
 
+      const sources = {};
+
       specifiers
         .filter(({ name }) => name === 0)
         .insertBefore(j.importDefaultSpecifier(j.identifier(namespace)))
@@ -41,16 +43,19 @@ module.exports = function(fileInfo, api, options) {
                 parent.node !== specPath.node &&
                 value.name !== namespace &&
                 specifiers.some(
-                  ({ value: { local } }) => local.name === value.name
+                  ({ value: { local } }) => local && local.name === value.name
                 )
             )
             .replaceWith(({ value }) => {
               const source = specifiers.filter(
                 ({ value: { local } }) => local.name === value.name
               );
+              if (source.length) {
+                sources[value.name] = source.get().value.imported.name;
+              }
               return j.identifier(
                 `${namespace}.${transformClassName(
-                  source.length ? source.get().value.imported.name : value.name
+                  sources[value.name] || value.name
                 )}`
               );
             })

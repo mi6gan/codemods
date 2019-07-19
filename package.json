@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "test": "jscodeshift -t transforms/use-default-css-imports.js"
+    "test": "jscodeshift -t transforms/use-default-css-imports.js --dry ../../src/components/BookmarksContainer.js"
   },
   "dependencies": {
     "gonzales-pe": "^4.2.4",
