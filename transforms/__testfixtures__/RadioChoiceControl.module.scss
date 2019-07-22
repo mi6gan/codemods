@@ -1,0 +1,42 @@
+$react-app-path: '../../';
+@import 'bootstrap';
+@import 'styles';
+@import '../../styles/mixins';
+
+.root {
+  composes: h5 from './Bootstrap.module.scss';
+}
+
+.control {
+  @extend .custom-control, .custom-radio, .custom-control-inline;
+  @include media-breakpoint-down(sm) {
+    & {
+      width: 100%;
+    }
+  }
+}
+
+.input {
+  @extend input, input[type='radio'], .custom-control-input;
+}
+
+.label {
+  @extend .custom-control-label, %radio-form-a;
+  color: #000;
+  font-weight: 500;
+}
+
+.labelChecked {
+  @extend %radio-form-a-checked;
+  font-weight: 600;
+  &:after {
+    background-color: #000;
+  }
+  &:before {
+    border: 2px solid #000;
+  }
+}
+
+.disabled {
+  cursor: auto;
+}

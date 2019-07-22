@@ -76,8 +76,8 @@ module.exports = function(fileInfo, api, options) {
   function getClassesIdentifierName(esPath, cssPath) {
     const { name: cssName } = parse(parse(cssPath).name);
     const { name: esName } = parse(esPath);
-    if (cssName === esName) {
-      return options.ns;
+    if (esName.split('.')[0] === cssName.split('.')[0]) {
+      return camelCase(options.ns);
     }
     return camelCase(`${cssName}-${options.ns}`);
   }
