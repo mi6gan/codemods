@@ -1,4 +1,3 @@
-const { readFileSync, writeFileSync } = require('fs');
 const { parse: cssParse } = require('gonzales-pe');
 
 /**
@@ -6,12 +5,12 @@ const { parse: cssParse } = require('gonzales-pe');
  *
  * Apply `rename` for all exported class names in css module at `path`.
  *
- * @param path: string
+ * @param fileInfo: {path: string, source: string}
  * @param renameFn: (string) => string
  */
-module.exports = function cssModuleRenameExports(path, renameFn) {
-  const cssTree = cssParse(readFileSync(path).toString('utf8'), {
-    syntax: path.endsWith('scss') ? 'scss' : 'css',
+module.exports = function renameCssClasses(fileInfo, renameFn) {
+  const cssTree = cssParse(fileInfo.source, {
+    syntax: fileInfo.path.endsWith('scss') ? 'scss' : 'css',
   });
 
   // Rename exported classes first.
@@ -46,5 +45,5 @@ module.exports = function cssModuleRenameExports(path, renameFn) {
     );
   });
 
-  writeFileSync(path, cssTree.toString());
+  return cssTree.toString();
 };

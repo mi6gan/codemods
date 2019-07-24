@@ -8,7 +8,7 @@ import {
   cxLabel,
   cxLabelChecked,
   cxRoot,
-} from './RadioChoiceControl.module.scss';
+} from './use-default-css-imports.input.scss';
 
 /**
  * Разметка и стили контрола radio choices.
@@ -75,7 +75,7 @@ export default class RadioChoiceControl<
                         className: classNames(
                           !!classValidate && classValidate,
                           classes.rowWrapperLast &&
-                            index === this.props.choices.length - 1
+                          index === this.props.choices.length - 1
                             ? classes.rowWrapperLast
                             : classes.rowWrapper
                         ),

@@ -1,0 +1,32 @@
+.cxRoot {
+  font-size: 12pt;
+}
+
+.cxControl {
+  @extend .custom-control, .custom-radio, .custom-control-inline;
+}
+
+.cxInput {
+  @extend input, input[type='radio'], .custom-control-input;
+  composes: cxControl;
+}
+
+.cxLabel {
+  @extend .custom-control-label;
+  color: #000;
+  font-weight: 500;
+}
+
+.cxLabelChecked {
+  font-weight: 600;
+  &:after {
+    background-color: #000;
+  }
+  &:before {
+    border: 2px solid #000;
+  }
+}
+
+.cxDisabled {
+  cursor: auto;
+}
