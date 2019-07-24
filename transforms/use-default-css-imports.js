@@ -1,6 +1,6 @@
 'use strict';
 
-const { join, parse, dirname } = require('path');
+const { parse } = require('path');
 const { camelCase } = require('lodash');
 const renameCssClasses = require('./lib/renameCssClasses');
 
@@ -9,7 +9,7 @@ module.exports = function(fileInfo, api, options) {
     ...module.exports.defaultOptions,
     ...options,
   };
-  
+
   switch (parse(fileInfo.path).ext) {
     case '.css':
     case '.scss':
